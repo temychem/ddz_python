@@ -1,10 +1,19 @@
 import re
+import pandas as pd
 
 def extract_max_score(column_name):
     match = re.search(r'(\d+)\s*вопрос', column_name.lower())
     if match:
         return int(match.group(1))
     else:
+        return None
+
+def clean_score(value):
+    if value == "-" or pd.isna(value):
+        return None
+    try:
+        return float(value)
+    except:
         return None
 
 
