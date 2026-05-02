@@ -1,3 +1,13 @@
+import re
+
+def extract_max_score(column_name):
+    match = re.search(r'(\d+)\s*вопрос', column_name.lower())
+    if match:
+        return int(match.group(1))
+    else:
+        return None
+
+
 def convert_to_scale(score, max_score):
     if score is None:
         return None
