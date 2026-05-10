@@ -56,3 +56,15 @@ def process_excel(file_path, output_path):
 
         if new_col in df.columns:
             continue
+
+        def temp(x):
+            return convert_to_scale(x, max_score)
+
+        df[new_col] = (
+            df[col]
+            .apply(clean_score)
+            .apply(temp)
+        )
+
+        df.to_excel(output_path, index=False)
+
