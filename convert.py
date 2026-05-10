@@ -35,3 +35,24 @@ def convert_to_scale(score, max_score):
         return 1
     else:
         return 0
+
+
+def process_excel(file_path, output_path):
+    df = pd.read_excel(file_path)
+
+    for col in df.columns:
+
+        if col in ["Fullname", "Номер по списку"]:
+            continue
+
+        if "(5-балльная)" in col:
+            continue
+
+        max_score = extract_max_score(col)
+        if not max_score:
+            continue
+
+        new_col = f"{col} (5-балльная)"
+
+        if new_col in df.columns:
+            continue
