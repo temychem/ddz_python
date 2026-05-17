@@ -5,10 +5,8 @@ from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTyp
 from excel.convert import process_excel
 from telegram.ext import ApplicationBuilder
 
-
-
 load_dotenv()
-TOKEN="8277817616:AAH5Y10xqqnGplRxwBjV6_15exsFVoJ7NKI"
+TOKEN = os.getenv("TOKEN")
 
 
 
