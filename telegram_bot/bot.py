@@ -1,4 +1,6 @@
 import os
+
+from openpyxl.worksheet.filters import Filters
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ConversationHandler, filters, ContextTypes, CallbackContext
 from excel.convert import process_excel
@@ -22,6 +24,11 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     os.remove(output_path)
     os.remove(input_path)
 
+def run_bot():
+    app = ApplicationBuilder().token(TOKEN).build()
 
+    app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
+    print('Telegram bot started')
+    app.run_polling()
 
 
