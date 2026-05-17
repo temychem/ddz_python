@@ -1,9 +1,12 @@
 import os
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 from excel.convert import process_excel
 
-TOKEN = os.getenv("TOKEN")
+load_dotenv()
+TOKEN="8277817616:AAH5Y10xqqnGplRxwBjV6_15exsFVoJ7NKI"
+
 
 
 async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
