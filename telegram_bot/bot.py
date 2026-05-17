@@ -1,8 +1,6 @@
 import os
-
-from openpyxl.worksheet.filters import Filters
 from telegram import Update
-from telegram.ext import ApplicationBuilder, MessageHandler, ConversationHandler, filters, ContextTypes, CallbackContext
+from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 from excel.convert import process_excel
 
 TOKEN = os.getenv("TOKEN")
