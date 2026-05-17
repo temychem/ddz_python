@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 from excel.convert import process_excel
+from telegram.ext import ApplicationBuilder
+
+
 
 load_dotenv()
 TOKEN="8277817616:AAH5Y10xqqnGplRxwBjV6_15exsFVoJ7NKI"
@@ -21,15 +24,16 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     process_excel(input_path, output_path)
 
-    await update.message.reply_document(document=open(output_path, "rb"))
+    with open(output_path, "rb") as doc:
+        await update.message.reply_document(document=doc)
     os.remove(output_path)
     os.remove(input_path)
+
 
 def run_bot():
     app = ApplicationBuilder().token(TOKEN).build()
 
     app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
-    print('Telegram bot started')
+
+    print(f'Telegram bot started.')
     app.run_polling()
-
-
