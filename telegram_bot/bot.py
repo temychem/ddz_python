@@ -33,5 +33,5 @@ def run_bot():
 
     app.add_handler(MessageHandler(filters.Document.ALL, handle_file))
 
-    print(f'Telegram bot started.')
+    print(f'Telegram bot started...')
     app.run_polling()
