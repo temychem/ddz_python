@@ -53,11 +53,6 @@ def convert_to_scale(
 def process_excel(
     file_path,
     output_path,
-    grade_5=0.9,
-    grade_4=0.7,
-    grade_3=0.5,
-    grade_2=0.3,
-    grade_1=0.1
 ):
 
     df = pd.read_excel(file_path)
